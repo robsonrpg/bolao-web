@@ -17,8 +17,10 @@
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="Bolão da Copa do Mundo FIFA 2026">
+  <meta name="build-stamp" content="BUILD_STAMP_PLACEHOLDER">
   <meta name="google-signin-client_id" content="GOOGLE_WEB_CLIENT_ID_PLACEHOLDER">
 
   <!-- iOS meta tags & icons -->
