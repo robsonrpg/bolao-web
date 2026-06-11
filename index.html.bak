@@ -20,8 +20,8 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="Bolão da Copa do Mundo FIFA 2026">
-  <meta name="build-stamp" content="BUILD_STAMP_PLACEHOLDER">
-  <meta name="google-signin-client_id" content="GOOGLE_WEB_CLIENT_ID_PLACEHOLDER">
+  <meta name="build-stamp" content="2026-06-10_23-42-36">
+  <meta name="google-signin-client_id" content="576949794334-kftp3e19lb5ueqn656knkh3cra33d00b.apps.googleusercontent.com">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
@@ -44,6 +44,25 @@
     For more details:
     * https://docs.flutter.dev/platform-integration/web/initialization
   -->
-  <script src="flutter_bootstrap.js" async></script>
+  <script>
+    (function () {
+      var stamp = document.querySelector('meta[name="build-stamp"]');
+      if (!stamp || !stamp.content) return;
+      var key = 'bolao_build_stamp';
+      var prev = localStorage.getItem(key);
+      if (prev && prev !== stamp.content && 'serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function (regs) {
+          Promise.all(regs.map(function (r) { return r.unregister(); }))
+            .finally(function () {
+              localStorage.setItem(key, stamp.content);
+              location.reload();
+            });
+        });
+        return;
+      }
+      localStorage.setItem(key, stamp.content);
+    })();
+  </script>
+  <script src="flutter_bootstrap.js?v=2026-06-10_23-42-36" async></script>
 </body>
 </html>
