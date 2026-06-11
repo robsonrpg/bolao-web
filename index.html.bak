@@ -20,7 +20,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="Bolão da Copa do Mundo FIFA 2026">
-  <meta name="build-stamp" content="2026-06-10_23-50-09">
+  <meta name="build-stamp" content="2026-06-11_00-25-35">
   <meta name="google-signin-client_id" content="576949794334-kftp3e19lb5ueqn656knkh3cra33d00b.apps.googleusercontent.com">
 
   <!-- iOS meta tags & icons -->
@@ -36,14 +36,6 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <!--
-    You can customize the "flutter_bootstrap.js" script.
-    This is useful to provide a custom configuration to the Flutter loader
-    or to give the user feedback during the initialization process.
-
-    For more details:
-    * https://docs.flutter.dev/platform-integration/web/initialization
-  -->
   <script>
     (function () {
       var stamp = document.querySelector('meta[name="build-stamp"]');
@@ -54,8 +46,12 @@
         navigator.serviceWorker.getRegistrations().then(function (regs) {
           Promise.all(regs.map(function (r) { return r.unregister(); }))
             .finally(function () {
-              localStorage.setItem(key, stamp.content);
-              location.reload();
+              caches.keys().then(function (keys) {
+                return Promise.all(keys.map(function (k) { return caches.delete(k); }));
+              }).finally(function () {
+                localStorage.setItem(key, stamp.content);
+                location.reload();
+              });
             });
         });
         return;
@@ -63,6 +59,6 @@
       localStorage.setItem(key, stamp.content);
     })();
   </script>
-  <script src="flutter_bootstrap.js?v=2026-06-10_23-50-09" async></script>
+  <script src="flutter_bootstrap.js?v=2026-06-11_00-25-35" async></script>
 </body>
 </html>
